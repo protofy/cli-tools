@@ -1,4 +1,4 @@
-module github.com/eviscares/kubeenv2
+module github.com/protofy/cli-tools/kubeenv
 
 go 1.19
 

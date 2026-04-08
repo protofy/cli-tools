@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+show_help() {
+  echo "Usage: aws-op <access-key-ref> <secret-key-ref> <region> <cluster-name>"
+  echo ""
+  echo "Arguments:"
+  echo "  access-key-ref    "
+  echo "  secret-key-ref    "
+  echo "  region            "
+  echo "  cluster-name      "
+}
+
+if [[ $# -eq 0 || "$1" == "-h" || "$1" == "--help" ]]; then
+  show_help
+  exit 0
+fi
+
+AWS_ACCESS_KEY_ID=$(op read "$1") AWS_SECRET_ACCESS_KEY=$(op read "$2") aws --region "$3" eks get-token --cluster-name "$4" --output json

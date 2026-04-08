@@ -6,6 +6,8 @@ name: Go
 on:
   push:
     tags: "*"
+    paths: 
+     - "kubeenv/**"
 
 jobs:
 
@@ -26,5 +28,6 @@ jobs:
         distribution: goreleaser
         version: latest
         args: release --rm-dist
+        workdir: kubeenv
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
